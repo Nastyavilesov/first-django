@@ -1,0 +1,37 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    {% block page_css %}{% endblock %}
+
+    <title>{{ title }}</title>
+</head>
+<body>
+
+<div class="container">
+
+    <header class="header item">
+        <span class="site-name">My Nail Blog</span>
+    </header>
+
+    <aside class="sidebar item">
+        <ul class="menu">
+            {% for key, value in menu.items %}
+                <li><a href="{{ value }}">{{ key }}</a></li>
+            {% endfor %}
+        </ul>
+    </aside>
+
+    <main class="content item">
+        {% block content %}{% endblock %}
+    </main>
+
+</div>
+
+</body>
+</html>
