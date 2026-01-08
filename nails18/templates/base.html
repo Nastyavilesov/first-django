@@ -6,7 +6,6 @@
     <meta charset="UTF-8">
 
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
-
     {% block page_css %}{% endblock %}
 
     <title>{{ title }}</title>
@@ -15,11 +14,11 @@
 
 <div class="container">
 
-    <header class="header item">
+    <header class="header">
         <span class="site-name">My Nail Blog</span>
     </header>
 
-    <aside class="sidebar item">
+    <aside class="sidebar">
         <ul class="menu">
             {% for key, value in menu.items %}
                 <li><a href="{{ value }}">{{ key }}</a></li>
@@ -27,7 +26,7 @@
         </ul>
     </aside>
 
-    <main class="content item">
+    <main class="content">
         {% block content %}{% endblock %}
     </main>
 

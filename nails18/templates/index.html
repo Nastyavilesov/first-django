@@ -2,45 +2,33 @@
 {% load static %}
 
 {% block page_css %}
-    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+<link rel="stylesheet" href="{% static 'css/index.css' %}">
 {% endblock %}
 
 {% block content %}
 
-    <h2 class="page-title">Добро пожаловать в мир ногтевой эстетики</h2>
+<h2 class="page-title">Добро пожаловать в мир ногтевой эстетики</h2>
 
-    <p class="intro-text">
-        Мой блог посвящён искусству маникюра, nail-дизайну и уходу за руками.
-        Здесь вы найдёте полезные советы, актуальные тренды и вдохновение
-        для создания аккуратного и стильного образа.
-    </p>
+<p class="intro-text">
+    Этот блог посвящён маникюру, nail-дизайну и уходу за руками.
+    Здесь собраны тренды, советы и идеи для вдохновения.
+</p>
 
-    <p class="intro-text">
-        Современный маникюр — это не просто покрытие ногтей,
-        а важная часть общего стиля и уверенности в себе.
-        Я рассказываю о техниках, формах, цветах и уходе,
-        которые помогают сохранить красоту и здоровье ногтей.
-    </p>
+<img src="{% static 'imgs/banner.jpg' %}" class="banner">
 
-    <p class="intro-text">
-        Блог будет полезен как начинающим мастерам,
-        так и тем, кто просто любит ухоженные руки
-        и хочет быть в курсе последних тенденций бьюти-индустрии.
-    </p>
+<h3 class="section-title">Последние публикации</h3>
 
-    <img src="{% static 'imgs/banner.jpeg' %}" class="banner" alt="Маникюр">
-
-    <h3 class="section-title">Последние публикации</h3>
-
-    <div class="post-list">
-        {% for post in posts %}
-        <div class="post-card">
-            <img src="{% static post.image %}">
+<div class="post-list">
+    {% for post in posts %}
+    <div class="post-card">
+        <img src="{% static post.image %}">
+        <div class="post-info">
             <h4>{{ post.title }}</h4>
             <p>{{ post.preview }}</p>
-            <a href="/post/{{ post.id }}/">Читать →</a>
+            <a href="/post/{{ post.id }}/" class="read-btn">Читать</a>
         </div>
-        {% endfor %}
     </div>
+    {% endfor %}
+</div>
 
 {% endblock %}
