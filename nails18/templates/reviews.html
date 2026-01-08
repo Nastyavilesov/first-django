@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'css/reviews.css' %}">
+{% endblock %}
+
+{% block content %}
+
+<h2 class="page-title">Отзывы наших читателей</h2>
+
+<p class="page-subtitle">
+    Здесь собраны отзывы посетителей блога.
+    Каждый отзыв проходит модерацию перед публикацией.
+</p>
+
+<div class="review-form">
+    <form method="post">
+        {% csrf_token %}
+
+        <div class="form-field">
+            {{ form.full_name }}
+        </div>
+
+        <div class="form-field">
+            {{ form.email }}
+        </div>
+
+        <div class="form-field">
+            {{ form.text }}
+        </div>
+
+        <button type="submit" class="btn">
+            Отправить отзыв
+        </button>
+    </form>
+</div>
+
+<h3>Отзывы наших читателей</h3>
+
+<div class="reviews-list">
+
+    {% for review in reviews %}
+        {% if review.is_checked %}
+        <div class="review-card">
+
+            <div class="review-header">
+                <span class="review-name">{{ review.full_name }}</span>
+                <span class="review-email">{{ review.email }}</span>
+            </div>
+
+            <div class="review-text">
+                {{ review.text|linebreaks }}
+            </div>
+
+        </div>
+        {% endif %}
+    {% empty %}
+        <p class="no-reviews">
+            Пока отзывов нет. Станьте первым, кто поделится своим мнением 💅
+        </p>
+    {% endfor %}
+
+</div>
+
+{% endblock %}
